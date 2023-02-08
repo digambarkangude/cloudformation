@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "Changeset"
+
+Parameters:
+  S3BucketName:
+    Description: Enter S3 Bucket ID/Name
+    Type: String
+
+  InstanceTypeParameter:
+    Description: Select Instance Type
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t2.small
+      - t2.large
+    Description: Enter t2.micro m1.small m1.large Default is t2.micro
+
+Resources:
+  S3Bucket: #Logical ID/Name
+    Type: AWS::S3::Bucket #Type of Resources
+    Properties:
+      BucketName: !Ref S3BucketName
+
+Outputs:
+  BucketName:
+    Value: !Ref S3Bucket
